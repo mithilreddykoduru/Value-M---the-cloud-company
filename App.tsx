@@ -10,6 +10,7 @@ import AIInnovation from './pages/AIInnovation';
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import Cieber from './pages/Cieber';
 
 // Component to scroll to top on route change
 const ScrollToTop = () => {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/cieber" element={<Cieber />} />
             <Route path="/expertise" element={<CloudExpertise />} />
             <Route path="/ai-innovation" element={<AIInnovation />} />
             <Route path="/contact" element={<Contact />} />

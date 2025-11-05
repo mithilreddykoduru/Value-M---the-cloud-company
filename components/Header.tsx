@@ -3,11 +3,18 @@ import { NavLink, Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
-const navLinks = [
+// Fix: Define an interface for nav links to include the optional 'external' property.
+interface NavLinkItem {
+  name: string;
+  path: string;
+  external?: boolean;
+}
+
+const navLinks: NavLinkItem[] = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
-  { name: 'Cieber.net', path: 'https://cieber-free.vercel.app/', external: true },
+  { name: 'Cieber.net', path: '/cieber' },
   { name: 'Expertise', path: '/expertise' },
   { name: 'AI Innovation', path: '/ai-innovation' },
   { name: 'Contact', path: '/contact' },
