@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
 import { motion } from 'framer-motion';
-import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaQuoteLeft, FaUserTie, FaRocket, FaHandshake, FaCogs } from 'react-icons/fa';
+import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaQuoteLeft, FaUserTie, FaRocket, FaHandshake, FaCogs, FaShieldAlt } from 'react-icons/fa';
 
 const Home: React.FC = () => {
   const containerVariants = {
@@ -165,8 +165,52 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Cieber.net Showcase Section */}
       <section className="py-20 bg-brand-dark">
+        <div className="container mx-auto px-6 text-center">
+            <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Our Companion Project: Cieber.net
+            </motion.h2>
+            <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+                An integrated part of our ecosystem, Cieber.net is our specialized platform for advanced cybersecurity and network intelligence.
+            </motion.p>
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+                className="max-w-4xl mx-auto bg-brand-dark/80 p-8 md:p-12 rounded-lg shadow-xl border border-gray-700/50"
+            >
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div className="md:w-2/3 text-center md:text-left">
+                        <h3 className="text-3xl font-bold text-white mb-4">Explore Proactive Security</h3>
+                        <p className="text-gray-300 leading-relaxed mb-6">
+                            Cieber.net provides a suite of tools designed to protect your digital assets, monitor threats in real-time, and offer deep insights into your network's health. It's the perfect complement to our cloud solutions.
+                        </p>
+                        <Link to="/cieber" className="bg-brand-secondary hover:bg-brand-primary text-white font-bold py-3 px-8 rounded-md transition-colors duration-300 inline-flex items-center justify-center md:justify-start">
+                            Visit Cieber.net <FaArrowRight className="ml-2" />
+                        </Link>
+                    </div>
+                    <div className="md:w-1/3 flex justify-center">
+                        <FaShieldAlt className="text-8xl md:text-9xl text-brand-secondary" />
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-brand-dark/50">
         <div className="container mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -209,7 +253,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Expertise Section */}
-      <section className="py-20 bg-brand-dark/50">
+      <section className="py-20 bg-brand-dark">
         <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold text-white mb-8">Trusted by Industry Leaders</h2>
             <div className="flex flex-wrap justify-center items-center gap-12 text-gray-400">
@@ -221,7 +265,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-brand-dark">
+      <section className="py-20 bg-brand-dark/50">
         <div className="container mx-auto px-6 text-center bg-gray-800/50 border border-gray-700/50 rounded-lg p-12">
             <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
