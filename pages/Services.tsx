@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { FaCloudUploadAlt, FaRobot, FaChartLine, FaCodeBranch, FaCog, FaShieldAlt } from 'react-icons/fa';
 
@@ -55,6 +56,11 @@ const containerVariants = {
 const Services: React.FC = () => {
   return (
     <PageWrapper className="py-20 bg-brand-dark">
+      <SEO 
+        title="Our Services | Cloud, AI, and DevOps Solutions | Value M"
+        description="Explore our comprehensive suite of services, including cloud migration, AI cloud automation, data analytics, DevOps, multi-cloud integration, and security."
+        keywords="cloud migration services, AI automation, data analytics solutions, DevOps consulting, multi-cloud integration, cloud security, CI/CD"
+      />
       <div className="container mx-auto px-6">
         <motion.div 
           className="text-center mb-16"

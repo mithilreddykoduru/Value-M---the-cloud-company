@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaQuoteLeft, FaUserTie, FaRocket, FaHandshake, FaCogs, FaShieldAlt } from 'react-icons/fa';
 
@@ -20,6 +21,11 @@ const Home: React.FC = () => {
 
   return (
     <PageWrapper>
+      <SEO 
+        title="Value M | Cloud & AI Technology Solutions"
+        description="Value M pioneers the future of business with intelligent, secure, and scalable cloud and AI solutions. Accelerate your growth with our expert services."
+        keywords="cloud technology, AI solutions, Value M, cloud migration, AI automation, data analytics, business growth, tech startup"
+      />
       {/* Hero Section */}
       <section className="relative text-center py-32 md:py-48 bg-brand-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>

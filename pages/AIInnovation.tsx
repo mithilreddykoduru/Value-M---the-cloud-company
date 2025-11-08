@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { FiTrendingUp, FiZap, FiDollarSign, FiLock, FiRepeat } from 'react-icons/fi';
 
@@ -48,6 +49,11 @@ const itemVariants = {
 const AIInnovation: React.FC = () => {
   return (
     <PageWrapper className="py-20 bg-brand-dark">
+      <SEO 
+        title="AI-Powered Innovation | Predictive Analytics & Automation | Value M"
+        description="Harness the power of Artificial Intelligence with Value M. We build smarter cloud solutions to enhance performance, predict outcomes, automate workflows, and optimize costs."
+        keywords="AI innovation, artificial intelligence solutions, predictive analytics, cloud cost optimization, AI workflow automation, AI security"
+      />
       <div className="container mx-auto px-6">
         <motion.div 
           className="text-center mb-16"

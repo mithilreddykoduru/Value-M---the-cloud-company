@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 
 const Cieber: React.FC = () => {
   useEffect(() => {
-    document.title = 'ciber.net';
     const redirectTimer = setTimeout(() => {
       window.location.href = 'https://cieber-free.vercel.app/';
     }, 1500); // 1.5-second delay before redirecting for a smoother UX
@@ -13,6 +13,12 @@ const Cieber: React.FC = () => {
 
   return (
     <PageWrapper>
+      <SEO 
+        title="Redirecting to Cieber.net"
+        description="You are being redirected to Cieber.net, our specialized platform for advanced cybersecurity and network intelligence. Please wait a moment."
+        keywords="Cieber.net, cybersecurity, network intelligence, redirect"
+        noindex={true}
+      />
       <div className="container mx-auto px-6 py-20 flex flex-col justify-center items-center" style={{minHeight: 'calc(100vh - 16rem)'}}>
         <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Redirecting to Cieber.net...</h1>

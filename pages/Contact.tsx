@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { FiMail, FiMapPin } from 'react-icons/fi';
 
@@ -56,6 +57,11 @@ const Contact: React.FC = () => {
 
   return (
     <PageWrapper className="py-20 bg-brand-dark">
+      <SEO 
+        title="Contact Value M | Get In Touch for a Consultation"
+        description="Ready to transform your business? Contact Value M today. We'd love to hear about your project and discuss how our cloud and AI expertise can help you achieve your goals."
+        keywords="contact Value M, get in touch, tech consultation, cloud solutions quote, AI project inquiry"
+      />
       <div className="container mx-auto px-6">
         <motion.div 
           className="text-center mb-16"

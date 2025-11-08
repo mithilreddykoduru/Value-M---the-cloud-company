@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaAws, FaGoogle, FaMicrosoft } from 'react-icons/fa';
 import { SiOracle, SiSalesforce } from 'react-icons/si';
@@ -42,6 +43,11 @@ const CloudExpertise: React.FC = () => {
 
   return (
     <PageWrapper className="py-20 bg-brand-dark">
+      <SEO 
+        title="Cloud Platform Expertise | AWS, Azure, Google Cloud | Value M"
+        description="Value M has deep expertise across major cloud platforms including AWS, Azure, Google Cloud, Oracle, and Salesforce. We build the perfect solution for your needs."
+        keywords="AWS experts, Azure solutions, Google Cloud partner, Oracle Cloud infrastructure, Salesforce integration, cloud platform specialists"
+      />
       <div className="container mx-auto px-6">
         <motion.div 
           className="text-center mb-12"

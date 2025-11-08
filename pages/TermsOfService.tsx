@@ -1,5 +1,6 @@
 import React from 'react';
 import PageWrapper from '../components/PageWrapper';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
 const TermsOfService: React.FC = () => {
@@ -10,6 +11,12 @@ const TermsOfService: React.FC = () => {
 
   return (
     <PageWrapper className="py-20 bg-brand-dark">
+      <SEO 
+        title="Terms of Service | Value M"
+        description="Review the Terms of Service for using Value M's website, cloud services, and AI solutions. Your use of our services constitutes acceptance of these terms."
+        keywords="terms of service, user agreement, legal terms, conditions of use"
+        noindex={true}
+      />
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           className="text-center mb-12"
