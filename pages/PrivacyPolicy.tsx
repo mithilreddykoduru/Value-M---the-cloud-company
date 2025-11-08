@@ -1,6 +1,5 @@
 import React from 'react';
 import PageWrapper from '../components/PageWrapper';
-import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
 const PrivacyPolicy: React.FC = () => {
@@ -11,12 +10,6 @@ const PrivacyPolicy: React.FC = () => {
 
   return (
     <PageWrapper className="py-20 bg-brand-dark">
-      <SEO 
-        title="Privacy Policy | Value M"
-        description="Read the Value M Privacy Policy to understand how we collect, use, and protect your personal and business data when you use our services."
-        keywords="privacy policy, data protection, user privacy, information security"
-        noindex={true}
-      />
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           className="text-center mb-12"

@@ -1,7 +1,6 @@
 
 import React from 'react';
 import PageWrapper from '../components/PageWrapper';
-import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { FaRocket, FaBullseye, FaLightbulb } from 'react-icons/fa';
 
@@ -13,11 +12,6 @@ const About: React.FC = () => {
 
   return (
     <PageWrapper className="py-20 bg-brand-dark">
-      <SEO 
-        title="About Value M | Our Mission and Story"
-        description="Discover the story behind Value M. Learn about our mission to empower businesses with state-of-the-art cloud and AI automation solutions, driven by innovation and customer-centricity."
-        keywords="about Value M, tech startup story, cloud innovation, AI mission, company vision, technology partnership"
-      />
       <div className="container mx-auto px-6">
         <motion.div 
           className="text-center mb-16"
