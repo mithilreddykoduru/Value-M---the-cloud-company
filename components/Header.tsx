@@ -32,25 +32,23 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const activeLinkClass = "text-brand-accent";
-  const normalLinkClass = "text-gray-300 hover:text-white transition-colors duration-300";
+  const activeLinkClass = "text-white font-medium";
+  const normalLinkClass = "text-gray-400 hover:text-white transition-colors duration-300 text-sm";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-dark/90 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-6 py-6 flex justify-between items-center">
-        <Link to="/">
-          <div>
-            <h1 className="text-5xl font-extrabold tracking-tighter">
-              Value <span className="text-brand-accent">M</span>
-            </h1>
-            <p className="text-base font-light text-gray-400 -mt-1">
-              - The Cloud Technology
-            </p>
-          </div>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-dark/70 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <Link to="/" className="flex flex-col items-start justify-center">
+          <h1 className="text-xl font-semibold tracking-tight text-white">
+            Value M
+          </h1>
+          <p className="text-[10px] uppercase tracking-widest text-gray-400 mt-0.5">
+            Cloud Technology
+          </p>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 items-center">
           {navLinks.map((link) => {
             if (link.external) {
               return (
@@ -85,7 +83,7 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       {isOpen && (
         <motion.div

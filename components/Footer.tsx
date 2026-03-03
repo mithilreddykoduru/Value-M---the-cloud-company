@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-brand-dark border-t border-gray-700/50">
+    <footer className="bg-brand-dark text-[#a1a1a6] border-t border-white/10">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              <h3 className="text-4xl font-extrabold tracking-tighter text-white">Value <span className="text-brand-accent">M</span></h3>
-              <p className="text-base font-light text-gray-400">- The Cloud Technology</p>
+              <h3 className="text-lg font-semibold tracking-tight text-white mb-1">Value M</h3>
+              <p className="text-xs uppercase tracking-widest text-[#a1a1a6]">Cloud Technology</p>
             </div>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-sm max-w-sm leading-relaxed">
               Pioneering the future of cloud technology with intelligent, secure, and scalable solutions. We integrate AI with cloud platforms to drive innovation and growth for your business.
             </p>
           </div>
