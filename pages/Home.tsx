@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaShieldAlt, FaCogs, FaHandshake, FaUserTie, FaRocket } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const Home: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -20,6 +21,12 @@ const Home: React.FC = () => {
 
   return (
     <PageWrapper>
+      <Helmet>
+        <title>Value M - Intelligent Cloud & AI Solutions</title>
+        <meta name="description" content="Pioneering the future of cloud technology with intelligent, secure, and scalable solutions. Value M integrates AI with cloud platforms to drive innovation." />
+        <link rel="canonical" href="https://www.valuem.com/" />
+      </Helmet>
+
       {/* Grandiose Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-brand-dark overflow-hidden pt-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,113,227,0.15)_0%,rgba(0,0,0,0)_60%)]"></div>

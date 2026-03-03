@@ -58,18 +58,22 @@ const AnimatedRoutes = () => {
   );
 };
 
+import { HelmetProvider } from 'react-helmet-async';
+
 function App() {
   return (
-    <div className="bg-brand-dark text-white min-h-screen flex flex-col selection:bg-brand-primary/30">
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <main className="flex-grow pt-20">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-      </Router>
-    </div>
+    <HelmetProvider>
+      <div className="bg-brand-dark text-white min-h-screen flex flex-col selection:bg-brand-primary/30">
+        <Router>
+          <ScrollToTop />
+          <Header />
+          <main className="flex-grow pt-20">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+        </Router>
+      </div>
+    </HelmetProvider>
   );
 }
 
