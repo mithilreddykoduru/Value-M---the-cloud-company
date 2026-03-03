@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PageWrapper from '../components/PageWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaAws, FaGoogle, FaMicrosoft } from 'react-icons/fa';
-import { SiOracle, SiSalesforce } from 'react-icons/si';
+import { FaAws, FaGoogle, FaMicrosoft, FaDatabase } from 'react-icons/fa';
+import { SiSalesforce } from 'react-icons/si';
 
 const platforms = [
   {
@@ -25,7 +25,7 @@ const platforms = [
   },
   {
     name: 'Oracle',
-    icon: <SiOracle className="w-12 h-12 text-red-700" />,
+    icon: <FaDatabase className="w-12 h-12 text-red-700" />,
     description: 'We provide expertise in Oracle Cloud Infrastructure (OCI), focusing on high-performance computing, mission-critical enterprise workloads, and robust database management for our clients.',
     benefits: ['High-Performance Computing', 'Enterprise-Grade Reliability', 'Autonomous Database'],
   },
@@ -43,7 +43,7 @@ const CloudExpertise: React.FC = () => {
   return (
     <PageWrapper className="py-20 bg-brand-dark">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,9 +59,8 @@ const CloudExpertise: React.FC = () => {
             {platforms.map(platform => (
               <button
                 key={platform.name}
-                className={`px-4 py-3 font-semibold text-lg transition-colors duration-300 ${
-                  selectedTab.name === platform.name ? 'text-brand-accent border-b-2 border-brand-accent' : 'text-gray-400 hover:text-white'
-                }`}
+                className={`px-4 py-3 font-semibold text-lg transition-colors duration-300 ${selectedTab.name === platform.name ? 'text-brand-accent border-b-2 border-brand-accent' : 'text-gray-400 hover:text-white'
+                  }`}
                 onClick={() => setSelectedTab(platform)}
               >
                 {platform.name}
