@@ -93,6 +93,7 @@ const About: React.FC = () => {
             </motion.div>
           </div>
         </div>
+      </div>
     </PageWrapper>
   );
 };
