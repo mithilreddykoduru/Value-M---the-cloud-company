@@ -1,298 +1,266 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
-import { motion } from 'framer-motion';
-import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaQuoteLeft, FaUserTie, FaRocket, FaHandshake, FaCogs, FaShieldAlt } from 'react-icons/fa';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaArrowRight, FaCloud, FaRobot, FaChartBar, FaAws, FaGoogle, FaMicrosoft, FaShieldAlt, FaCogs, FaHandshake, FaUserTie, FaRocket } from 'react-icons/fa';
 
 const Home: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
+  const { scrollYProgress } = useScroll();
+  const yHeroText = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacityHeroText = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const bentoVariants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 },
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
   return (
     <PageWrapper>
-      {/* Hero Section */}
-      <section className="relative text-center py-32 md:py-48 bg-brand-dark overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0 }}
-            className="mb-8"
+      {/* Grandiose Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-brand-dark overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,113,227,0.15)_0%,rgba(0,0,0,0)_60%)]"></div>
+
+        <motion.div
+          style={{ y: yHeroText, opacity: opacityHeroText }}
+          className="container mx-auto px-6 relative z-10 text-center"
+        >
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-2xl md:text-3xl font-medium text-gray-400 tracking-tight mb-4"
           >
-            <h2 className="text-5xl md:text-7xl font-extrabold text-white tracking-tighter">
-              Value <span className="text-brand-accent">M</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-400 font-light">
-              - The Cloud Technology
-            </p>
-          </motion.div>
+            Value M.
+          </motion.h2>
 
           <motion.h1
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tighter"
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-8xl lg:text-[9rem] font-bold text-white leading-none tracking-tighter"
           >
-            Pioneering the Future of <span className="text-brand-primary">Cloud & AI</span>
+            Cloud.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-blue-400 to-brand-accent">
+              Perfected.
+            </span>
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="mt-8 text-xl md:text-2xl text-[#a1a1a6] font-medium max-w-2xl mx-auto tracking-tight"
           >
-            We deliver intelligent, secure, and scalable cloud solutions to accelerate your business growth.
+            Intelligent, secure, and infinitely scalable architecture for the modern web.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6"
           >
-            <Link to="/services" className="bg-brand-primary hover:bg-brand-secondary text-white font-bold py-3 px-8 rounded-md transition-colors duration-300 flex items-center justify-center">
-              Explore Our Services <FaArrowRight className="ml-2" />
+            <Link to="/services" className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-10 rounded-full transition-all duration-300 text-lg shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+              Discover Services
             </Link>
-            <Link to="/contact" className="bg-transparent border-2 border-brand-accent hover:bg-brand-accent text-white font-bold py-3 px-8 rounded-md transition-colors duration-300">
-              Contact Us
+            <Link to="/contact" className="text-white hover:text-brand-primary font-medium py-4 px-8 flex items-center transition-colors duration-300 text-lg group">
+              Contact Sales <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Services Overview Section */}
-      <section className="py-20 bg-brand-dark">
-        <div className="container mx-auto px-6 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Core Services
-            </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-            We provide a comprehensive suite of services to meet your cloud and AI needs.
-            </motion.p>
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaCloud className="text-4xl text-brand-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Cloud Migration</h3>
-              <p className="text-gray-400">Seamlessly transition your infrastructure to the cloud for enhanced scalability and efficiency.</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaRobot className="text-4xl text-brand-secondary mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">AI Automation</h3>
-              <p className="text-gray-400">Leverage AI to automate complex processes, reduce costs, and boost productivity.</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaChartBar className="text-4xl text-brand-accent mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Data Analytics</h3>
-              <p className="text-gray-400">Unlock actionable insights from your data to make smarter business decisions.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Bento Box Services Section */}
+      <section className="py-32 bg-brand-dark">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+              Everything you need. <br className="hidden md:block" />
+              <span className="text-gray-500">Built right in.</span>
+            </h2>
+          </div>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-brand-dark/50">
-        <div className="container mx-auto px-6 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Why Choose Us?
-            </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-            We are more than just a service provider; we are your technology partner.
-            </motion.p>
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaUserTie className="text-4xl text-brand-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Deep Expertise</h3>
-              <p className="text-gray-400">Our certified experts bring years of experience across all major cloud platforms.</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaRocket className="text-4xl text-brand-secondary mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Innovation-Driven</h3>
-              <p className="text-gray-400">We leverage cutting-edge AI and automation to keep you ahead of the curve.</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaHandshake className="text-4xl text-brand-accent mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Customer-Centric</h3>
-              <p className="text-gray-400">Your success is our priority. We build partnerships based on trust and transparency.</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50">
-              <FaCogs className="text-4xl text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Tailored Solutions</h3>
-              <p className="text-gray-400">We don't believe in one-size-fits-all. We craft solutions specific to your unique needs.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Cieber.net Showcase Section */}
-      <section className="py-20 bg-brand-dark">
-        <div className="container mx-auto px-6 text-center">
-            <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Our Companion Project: Cieber.net
-            </motion.h2>
-            <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
-                An integrated part of our ecosystem, Cieber.net is our specialized platform for advanced cybersecurity and network intelligence.
-            </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+            {/* Large Card */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6 }}
-                className="max-w-4xl mx-auto bg-brand-dark/80 p-8 md:p-12 rounded-lg shadow-xl border border-gray-700/50"
+              variants={bentoVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="md:col-span-2 bg-brand-card rounded-[2rem] p-10 md:p-14 border border-white/5 relative overflow-hidden group hover:border-white/10 transition-colors"
             >
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="md:w-2/3 text-center md:text-left">
-                        <h3 className="text-3xl font-bold text-white mb-4">Explore Proactive Security</h3>
-                        <p className="text-gray-300 leading-relaxed mb-6">
-                            Cieber.net provides a suite of tools designed to protect your digital assets, monitor threats in real-time, and offer deep insights into your network's health. It's the perfect complement to our cloud solutions.
-                        </p>
-                        <Link to="/cieber" className="bg-brand-secondary hover:bg-brand-primary text-white font-bold py-3 px-8 rounded-md transition-colors duration-300 inline-flex items-center justify-center md:justify-start">
-                            Visit Cieber.net <FaArrowRight className="ml-2" />
-                        </Link>
-                    </div>
-                    <div className="md:w-1/3 flex justify-center">
-                        <FaShieldAlt className="text-8xl md:text-9xl text-brand-secondary" />
-                    </div>
-                </div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/20 blur-[100px] rounded-full group-hover:bg-brand-primary/30 transition-colors"></div>
+              <FaCloud className="text-5xl text-brand-primary mb-8 relative z-10" />
+              <h3 className="text-4xl font-semibold text-white mb-4 relative z-10 tracking-tight">Cloud Migration</h3>
+              <p className="text-[#a1a1a6] text-xl max-w-md leading-relaxed relative z-10">
+                Move your infrastructure to the future with zero downtime. Scalable, resilient, and blazing fast.
+              </p>
             </motion.div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-brand-dark/50">
-        <div className="container mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-12">
-            What Our Clients Say
-          </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50 text-left flex flex-col">
-              <FaQuoteLeft className="text-2xl text-brand-primary mb-4" />
-              <p className="text-gray-300 italic mb-4 flex-grow">
-                "Value M built a comprehensive dashboard for our sales, inventory, and CRM. It has completely streamlined our boutique's operations."
-              </p>
-              <p className="font-bold text-white mt-auto">- BPL Designer Studio</p>
+            {/* Small Card 1 */}
+            <motion.div
+              variants={bentoVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="bg-brand-card rounded-[2rem] p-10 border border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
+            >
+              <FaRobot className="text-4xl text-purple-500 mb-6" />
+              <div>
+                <h3 className="text-2xl font-semibold text-white mb-3 tracking-tight">AI Automation</h3>
+                <p className="text-[#a1a1a6] leading-relaxed">Intelligence applied to your workflows. Automate the mundane, amplify the human.</p>
+              </div>
             </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50 text-left flex flex-col">
-              <FaQuoteLeft className="text-2xl text-brand-primary mb-4" />
-              <p className="text-gray-300 italic mb-4 flex-grow">
-                "Partnering with Value M allowed us to build and scale a secure cloud platform for patient data management. Their expertise has been invaluable."
-              </p>
-              <p className="font-bold text-white mt-auto">- Children's Hospital</p>
+
+            {/* Small Card 2 */}
+            <motion.div
+              variants={bentoVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="bg-brand-card rounded-[2rem] p-10 border border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
+            >
+              <FaChartBar className="text-4xl text-brand-accent mb-6" />
+              <div>
+                <h3 className="text-2xl font-semibold text-white mb-3 tracking-tight">Data Analytics</h3>
+                <p className="text-[#a1a1a6] leading-relaxed">Turn infinite data streams into structured, actionable business intelligence.</p>
+              </div>
             </motion.div>
-            <motion.div variants={itemVariants} className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50 text-left flex flex-col">
-              <FaQuoteLeft className="text-2xl text-brand-primary mb-4" />
-              <p className="text-gray-300 italic mb-4 flex-grow">
-                "They developed a micro-financing app that scaled my business on the cloud, opening up new opportunities for growth."
-              </p>
-              <p className="font-bold text-white mt-auto">- Anonymous Financer</p>
+
+            {/* Medium Horizontal Card */}
+            <motion.div
+              variants={bentoVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="md:col-span-2 bg-brand-card rounded-[2rem] p-10 md:p-14 border border-white/5 flex flex-col md:flex-row items-center justify-between hover:border-white/10 transition-colors"
+            >
+              <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
+                <FaShieldAlt className="text-5xl text-red-500 mb-6 mx-auto md:mx-0" />
+                <h3 className="text-3xl font-semibold text-white mb-4 tracking-tight">Cieber.net Security</h3>
+                <p className="text-[#a1a1a6] text-lg max-w-sm">
+                  Proactive threat networks and infrastructure hardening. Included with every deployment.
+                </p>
+              </div>
+              <Link to="/cieber" className="bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300">
+                Learn More
+              </Link>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Expertise Section */}
-      <section className="py-20 bg-brand-dark">
+      <section className="py-24 bg-black border-y border-white/5">
         <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Trusted by Industry Leaders</h2>
-            <div className="flex flex-wrap justify-center items-center gap-12 text-gray-400">
-                <FaAws className="w-16 h-16 hover:text-white transition-colors" />
-                <FaMicrosoft className="w-14 h-14 hover:text-white transition-colors" />
-                <FaGoogle className="w-14 h-14 hover:text-white transition-colors" />
-            </div>
+          <h2 className="text-xl font-medium text-[#a1a1a6] mb-12 tracking-wide uppercase">Powered by the best</h2>
+          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 text-[#a1a1a6] opacity-50">
+            <FaAws className="w-16 h-16 hover:text-white transition-colors duration-500 hover:opacity-100 cursor-pointer" />
+            <FaMicrosoft className="w-14 h-14 hover:text-white transition-colors duration-500 hover:opacity-100 cursor-pointer" />
+            <FaGoogle className="w-14 h-14 hover:text-white transition-colors duration-500 hover:opacity-100 cursor-pointer" />
+          </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-brand-dark/50">
-        <div className="container mx-auto px-6 text-center bg-gray-800/50 border border-gray-700/50 rounded-lg p-12">
-            <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Transform Your Business?
-            </motion.h2>
-            <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let's discuss how our cloud and AI expertise can help you achieve your goals.
-            </motion.p>
+      {/* Why Choose Us - Minimalist List */}
+      <section className="py-32 bg-brand-dark overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row gap-20 items-center">
             <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="md:w-1/2"
             >
-                <Link to="/contact" className="bg-brand-accent hover:bg-brand-primary text-white font-bold py-3 px-8 rounded-md transition-colors duration-300 inline-block">
-                    Get in Touch
-                </Link>
+              <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-tight">
+                Designed for scale.<br />
+                <span className="text-[#a1a1a6]">Engineered for you.</span>
+              </h2>
+              <p className="text-xl text-[#a1a1a6] leading-relaxed mb-10">
+                We believe that the most powerful cloud architectures shouldn't feel complicated. We abstract the complexity so you can focus on building your product.
+              </p>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="md:w-1/2 space-y-12"
+            >
+              <div className="flex items-start">
+                <div className="flex-shrink-0 mr-6">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
+                    <FaUserTie className="text-xl" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-2xl font-semibold text-white mb-2 tracking-tight">Deep Expertise</h4>
+                  <p className="text-[#a1a1a6] leading-relaxed">Decades of combined experience traversing the most complex enterprise migrations.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="flex-shrink-0 mr-6">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
+                    <FaRocket className="text-xl" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-2xl font-semibold text-white mb-2 tracking-tight">Innovation-Driven</h4>
+                  <p className="text-[#a1a1a6] leading-relaxed">Always implementing the cutting edge, from serverless to advanced LLM integrations.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="flex-shrink-0 mr-6">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
+                    <FaHandshake className="text-xl" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-2xl font-semibold text-white mb-2 tracking-tight">Customer-Centric</h4>
+                  <p className="text-[#a1a1a6] leading-relaxed">Dedicated support teams that act as an extension of your own engineering force.</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-32 bg-black relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8">
+            Start building<br />the future.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-[#a1a1a6] mb-12 max-w-2xl mx-auto tracking-tight">
+            Reach out to our cloud architects today for a free evaluation of your infrastructure.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Link to="/contact" className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-12 rounded-full transition-all duration-300 inline-block text-lg shadow-lg">
+              Let's Talk
+            </Link>
+          </motion.div>
         </div>
       </section>
     </PageWrapper>

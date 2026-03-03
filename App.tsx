@@ -23,24 +23,49 @@ const ScrollToTop = () => {
   return null;
 };
 
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Component for animated page routing
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  const pageVariants = {
+    initial: { opacity: 0, scale: 0.98, filter: "blur(5px)" },
+    in: { opacity: 1, scale: 1, filter: "blur(0px)" },
+    out: { opacity: 0, filter: "blur(5px)" }
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5
+  };
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><Home /></motion.div>} />
+        <Route path="/about" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><About /></motion.div>} />
+        <Route path="/services" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><Services /></motion.div>} />
+        <Route path="/cieber" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><Cieber /></motion.div>} />
+        <Route path="/expertise" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><CloudExpertise /></motion.div>} />
+        <Route path="/ai-innovation" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><AIInnovation /></motion.div>} />
+        <Route path="/contact" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><Contact /></motion.div>} />
+        <Route path="/privacy-policy" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><PrivacyPolicy /></motion.div>} />
+        <Route path="/terms-of-service" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><TermsOfService /></motion.div>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 function App() {
   return (
-    <div className="bg-brand-dark text-white min-h-screen flex flex-col">
+    <div className="bg-brand-dark text-white min-h-screen flex flex-col selection:bg-brand-primary/30">
       <Router>
         <ScrollToTop />
         <Header />
-        <main className="flex-grow pt-32">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/cieber" element={<Cieber />} />
-            <Route path="/expertise" element={<CloudExpertise />} />
-            <Route path="/ai-innovation" element={<AIInnovation />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-          </Routes>
+        <main className="flex-grow pt-20">
+          <AnimatedRoutes />
         </main>
         <Footer />
       </Router>
