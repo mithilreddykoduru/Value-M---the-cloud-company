@@ -63,7 +63,7 @@ import { HelmetProvider } from 'react-helmet-async';
 function App() {
   return (
     <HelmetProvider>
-      <div className="bg-brand-dark text-white min-h-screen flex flex-col selection:bg-brand-primary/30">
+      <div className="bg-white text-gray-900 min-h-screen flex flex-col selection:bg-brand-primary/20">
         <Router>
           <ScrollToTop />
           <Header />

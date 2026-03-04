@@ -3,7 +3,6 @@ import { NavLink, Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
-// Fix: Define an interface for nav links to include the optional 'external' property.
 interface NavLinkItem {
   name: string;
   path: string;
@@ -32,14 +31,14 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const activeLinkClass = "text-white font-medium";
-  const normalLinkClass = "text-gray-400 hover:text-white transition-colors duration-300 text-sm";
+  const activeLinkClass = "text-brand-primary font-medium";
+  const normalLinkClass = "text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-dark/70 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm' : 'bg-white/60 backdrop-blur-sm'}`}>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="flex flex-col items-start justify-center">
-          <h1 className="text-xl font-semibold tracking-tight text-white">
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900">
             Value M
           </h1>
           <p className="text-[10px] uppercase tracking-widest text-gray-400 mt-0.5">
@@ -78,7 +77,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white text-2xl">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 text-2xl">
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
@@ -90,9 +89,9 @@ const Header: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-brand-dark pb-4"
+          className="md:hidden bg-white border-t border-gray-100 pb-4"
         >
-          <nav className="flex flex-col items-center space-y-4">
+          <nav className="flex flex-col items-center space-y-4 pt-4">
             {navLinks.map((link) => {
               if (link.external) {
                 return (

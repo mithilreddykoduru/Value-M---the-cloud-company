@@ -11,7 +11,7 @@ const services = [
     description: 'Seamlessly migrate your applications, data, and infrastructure to the cloud with minimal downtime.',
   },
   {
-    icon: <FaRobot className="text-4xl text-brand-secondary" />,
+    icon: <FaRobot className="text-4xl text-purple-500" />,
     title: 'AI Cloud Automation',
     description: 'Automate complex workflows and processes using AI, enhancing efficiency and reducing operational costs.',
   },
@@ -46,29 +46,27 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const Services: React.FC = () => {
   return (
-    <PageWrapper className="py-20 bg-brand-dark">
+    <PageWrapper className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white">Our Services</h1>
-          <p className="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">Our Services</h1>
+          <p className="text-lg text-gray-500 mt-4 max-w-3xl mx-auto">
             Comprehensive solutions to power your digital transformation journey.
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -78,14 +76,14 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-brand-dark p-8 rounded-lg shadow-lg border border-gray-700/50 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-brand-primary"
+              className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-brand-primary/30"
               variants={cardVariants}
             >
               <div className="flex items-center mb-4">
                 {service.icon}
-                <h3 className="text-2xl font-bold text-white ml-4">{service.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 ml-4">{service.title}</h3>
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-500">
                 {service.description}
               </p>
             </motion.div>

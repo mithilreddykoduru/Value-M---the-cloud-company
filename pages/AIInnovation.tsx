@@ -11,7 +11,7 @@ const innovations = [
     description: 'Our AI models analyze workloads and automatically scale resources, ensuring optimal performance and responsiveness at all times, preventing bottlenecks before they occur.',
   },
   {
-    icon: <FiTrendingUp className="w-10 h-10 text-brand-secondary" />,
+    icon: <FiTrendingUp className="w-10 h-10 text-purple-500" />,
     title: 'Predict Future Outcomes',
     description: 'Leveraging predictive analytics, we help you forecast demand, identify potential issues, and make data-driven decisions to stay ahead of the competition.',
   },
@@ -47,20 +47,20 @@ const itemVariants = {
 
 const AIInnovation: React.FC = () => {
   return (
-    <PageWrapper className="py-20 bg-brand-dark">
+    <PageWrapper className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white">AI-Powered Innovation</h1>
-          <p className="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">AI-Powered Innovation</h1>
+          <p className="text-lg text-gray-500 mt-4 max-w-3xl mx-auto">
             Harnessing the power of Artificial Intelligence to build smarter, more efficient cloud solutions.
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -70,15 +70,15 @@ const AIInnovation: React.FC = () => {
           {innovations.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-brand-dark p-6 rounded-lg shadow-lg flex items-start space-x-4 border border-gray-700/50"
+              className="bg-white p-6 rounded-2xl shadow-sm flex items-start space-x-4 border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all"
               variants={itemVariants}
             >
-              <div className="flex-shrink-0 bg-gray-800 p-4 rounded-full">
+              <div className="flex-shrink-0 bg-gray-50 p-4 rounded-2xl">
                 {item.icon}
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-400">{item.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-500">{item.description}</p>
               </div>
             </motion.div>
           ))}
